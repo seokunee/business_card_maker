@@ -1,0 +1,33 @@
+@value makerMainColor, makerBlack, makerWhite from '/src/common/colors.css';
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: makerMainColor;
+}
+.header img {
+  width: 3rem;
+  padding: 0.5rem 0;
+}
+
+.title {
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  padding-bottom: 1rem;
+}
+
+.logout {
+  position: absolute;
+  padding: 0.4rem 0.3rem;
+  border-radius: 5px;
+  font-weight: 700;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+  background-color: makerBlack;
+  color: makerWhite;
+  /* display: none; */
+}

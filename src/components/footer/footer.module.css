@@ -1,0 +1,14 @@
+@value makerMainColor from '/src/common/colors.css';
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: makerMainColor;
+}
+
+.footer__title {
+  font-size: 0.8rem;
+  padding: 0.4rem 0;
+  color: white;
+}
