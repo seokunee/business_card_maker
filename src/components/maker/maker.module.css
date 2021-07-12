@@ -1,0 +1,10 @@
+@value makerWhite from '/src/common/colors.css';
+
+.container {
+  width: 80%;
+  position: relative;
+}
+.maker {
+  background-color: makerWhite;
+  height: 30rem;
+}

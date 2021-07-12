@@ -28,6 +28,12 @@
   top: 1rem;
   cursor: pointer;
   background-color: makerBlack;
+  opacity: 0.7;
   color: makerWhite;
-  /* display: none; */
+  transition: transform 0.02s ease-in-out;
+}
+
+.logout:hover {
+  opacity: 1;
+  transform: scale(1.02);
 }

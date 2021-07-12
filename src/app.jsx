@@ -1,21 +1,35 @@
 import React, { useState } from "react";
 import styles from "./app.module.css";
 import Login from "./components/login/login";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
+import Maker from "./components/maker/maker";
 
-function App({ authService }) {
-  const [logout, setLogout] = useState(false);
+const App = ({ authService }) => {
+  const [userId, setUserId] = useState(null);
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <div className={styles.container}>
-            <Login logout={logout} authService={authService} />
+            <Login
+              authService={authService}
+              setUserId={setUserId}
+              userId={userId}
+            />
+          </div>
+        </Route>
+        <Route exact path="/maker">
+          <div className={styles.container}>
+            <Maker
+              authService={authService}
+              userId={userId}
+              setUserId={setUserId}
+            />
           </div>
         </Route>
       </Switch>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
