@@ -1,0 +1,19 @@
+@value mediaQuery from '/src/common/size.css';
+
+.preview {
+  flex-basis: 50%;
+  height: 100%;
+  background-color: coral;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  color: makerGreen;
+}
+
+@media screen and (max-width: mediaQuery) {
+  .preview {
+    flex-basis: 100%;
+  }
+}

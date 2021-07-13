@@ -3,6 +3,8 @@ import styles from "./maker.module.css";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import { useHistory } from "react-router";
+import Editor from "../editor/editor";
+import Preview from "../preview/preview";
 
 const Maker = ({ authService, userId, setUserId }) => {
   const history = useHistory();
@@ -20,9 +22,12 @@ const Maker = ({ authService, userId, setUserId }) => {
   });
   return (
     <div className={styles.container}>
-      <Header logout={logout} />
-      <section className={styles.maker}></section>
-      <Footer />
+      <Header userId={userId} logout={logout} />
+      <section className={styles.maker}>
+        <Editor />
+        <Preview />
+      </section>
+      <Footer userId={userId} />
     </div>
   );
 };

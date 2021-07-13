@@ -6,15 +6,18 @@
   align-items: center;
   flex-direction: column;
   background-color: makerMainColor;
+  /* position: fixed; */
+  /* width: 80%; */
 }
+
 .header img {
-  width: 3rem;
+  width: 2.5rem;
   padding: 0.5rem 0;
 }
 
 .title {
   color: white;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 700;
   padding-bottom: 1rem;
 }

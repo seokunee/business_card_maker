@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./header.module.css";
 
-const Header = ({ logout }) => {
+const Header = ({ logout, userId }) => {
   return (
     <header className={styles.header}>
       {logout && (

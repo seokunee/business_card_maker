@@ -1,0 +1,21 @@
+@value mediaQuery from '/src/common/size.css';
+@value makerGreen from '/src/common/colors.css';
+
+.editor {
+  flex-basis: 50%;
+  height: 100%;
+  background-color: burlywood;
+  border-right: 2px solid rgb(216, 216, 216);
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  color: makerGreen;
+}
+
+@media screen and (max-width: mediaQuery) {
+  .editor {
+    flex-basis: 100%;
+  }
+}
