@@ -1,0 +1,9 @@
+@value makerMainColor, makerWhite  from "/src/common/colors.css";
+
+.button {
+  flex: 1 1 50%;
+  background-color: makerMainColor;
+  border: none;
+  outline: none;
+  color: makerWhite;
+}

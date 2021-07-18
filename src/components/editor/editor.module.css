@@ -1,11 +1,24 @@
 @value mediaQuery from '/src/common/size.css';
-@value makerGreen from '/src/common/colors.css';
+@value makerGreen, makerBorderColor from '/src/common/colors.css';
 
 .editor {
   flex-basis: 50%;
   height: 100%;
-  background-color: burlywood;
-  border-right: 2px solid rgb(216, 216, 216);
+  border-right: 2px solid makerBorderColor;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.editor::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
 }
 
 .title {
@@ -17,5 +30,7 @@
 @media screen and (max-width: mediaQuery) {
   .editor {
     flex-basis: 100%;
+    border-bottom: 2px solid makerBorderColor;
+    border-right: none;
   }
 }

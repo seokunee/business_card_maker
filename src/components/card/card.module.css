@@ -1,0 +1,64 @@
+@value mediaQuery from '/src/common/size.css';
+@value makerBlack, makerWheat, makerColorful, makerWhite from '/src/common/colors.css';
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  max-width: 30rem;
+}
+
+.card.light {
+  background-color: rgb(151, 228, 228);
+  color: makerBlacks;
+}
+.card.dark {
+  background-color: makerBlack;
+  color: makerWhite;
+}
+.card.colorful {
+  background: makerColorful;
+  color: makerWhite;
+}
+
+.image {
+  width: 5rem;
+  height: 5rem;
+  margin: 1.2rem 1.2rem 1.2rem 0.8rem;
+  border-radius: 50%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.name {
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.company,
+.field,
+.email,
+.message {
+  font-size: 0.8rem;
+  margin: 0 0 0.2rem 0;
+}
+.company {
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid makerWheat;
+}
+
+@media screen and (max-width: mediaQuery) {
+  .card {
+    /* width: 80%; */
+  }
+}

@@ -4,8 +4,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  width: 80%;
+  width: 90%;
   height: 100vh;
   position: relative;
   background-color: makerWhite;
@@ -14,11 +13,14 @@
 .maker {
   background-color: makerWhite;
   display: flex;
-  height: 100%;
+  overflow: auto;
+}
+.maker::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 
 @media screen and (max-width: mediaQuery) {
   .maker {
-    flex-direction: column;
+    /* flex-direction: column; */
   }
 }

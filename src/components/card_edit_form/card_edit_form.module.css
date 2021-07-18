@@ -1,0 +1,46 @@
+@value makerPink, makerBlack, makerBorderColor, makerMainColor, makerWhite from '/src/common/colors.css';
+@value tablePadding from '/src/common/size.css';
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  border-top: 1px solid makerBlack;
+  border-left: 1px solid makerBlack;
+}
+
+.input,
+.select,
+.textarea {
+  font-size: 0.8rem;
+  border: 0;
+  border-bottom: 1px solid makerBlack;
+  border-right: 1px solid makerBlack;
+  padding: 0.3rem;
+}
+
+.input,
+.select {
+  flex: 1 1 33.33%;
+}
+
+.textarea {
+  flex: 1 1 100%;
+}
+
+.image__input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 50%;
+  border-left: 1px solid makerBlack;
+  border-bottom: 1px solid makerBlack;
+  background-color: makerPink;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+}

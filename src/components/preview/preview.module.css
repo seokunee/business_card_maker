@@ -1,15 +1,29 @@
 @value mediaQuery from '/src/common/size.css';
+@value makerBlack, makerColorful from '/src/common/colors.css';
 
 .preview {
   flex-basis: 50%;
-  height: 100%;
-  background-color: coral;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-.title {
+.preview::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.main__title {
   width: 100%;
   text-align: center;
   color: makerGreen;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
 }
 
 @media screen and (max-width: mediaQuery) {
