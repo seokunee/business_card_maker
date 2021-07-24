@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 import Editor from "../editor/editor";
 import Preview from "../preview/preview";
 
-const Maker = ({ authService, userId, setUserId }) => {
+const Maker = ({ FileUploader, authService, userId, setUserId }) => {
   const [cardsInfo, setCardsInfo] = useState([
     {
       id: 1,
@@ -70,11 +70,30 @@ const Maker = ({ authService, userId, setUserId }) => {
   const onAdd = (card) => {
     setCardsInfo([...cardsInfo, card]);
   };
+
+  const onUpdate = (card, index) => {
+    const copy = [...cardsInfo];
+    copy[index] = card;
+    setCardsInfo(copy);
+  };
+
+  const onDelete = (index) => {
+    const copy = [...cardsInfo];
+    copy.splice(index, 1);
+    setCardsInfo(copy);
+  };
+
   return (
     <div className={styles.container}>
       <Header userId={userId} logout={logout} />
       <section className={styles.maker}>
-        <Editor cardsInfo={cardsInfo} onAdd={onAdd} />
+        <Editor
+          cardsInfo={cardsInfo}
+          FileUploader={FileUploader}
+          onAdd={onAdd}
+          onUpdate={onUpdate}
+          onDelete={onDelete}
+        />
         <Preview cardsInfo={cardsInfo} />
       </section>
       <Footer userId={userId} />

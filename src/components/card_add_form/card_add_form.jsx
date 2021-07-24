@@ -3,7 +3,7 @@ import Button from "../delete/button";
 import ProfileImageInput from "../profile_image_input/profile_image_input";
 import styles from "./card_add_form.module.css";
 
-const CardAddForm = ({ cardsInfo, onAdd }) => {
+const CardAddForm = ({ FileUploader, cardsInfo, onAdd }) => {
   const formRef = useRef();
   const nameRef = useRef();
   const companyRef = useRef();
@@ -11,6 +11,7 @@ const CardAddForm = ({ cardsInfo, onAdd }) => {
   const fieldRef = useRef();
   const emailRef = useRef();
   const messageRef = useRef();
+  const [file, setFile] = useState({ fileName: "", fileURL: "" });
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -22,11 +23,18 @@ const CardAddForm = ({ cardsInfo, onAdd }) => {
       field: fieldRef.current.value || "",
       email: emailRef.current.value || "",
       message: messageRef.current.value || "",
-      fileName: "",
-      fileURL: "",
+      fileName: file.fileName || "",
+      fileURL: file.fileURL || "",
     };
     onAdd(card);
     formRef.current.reset();
+  };
+
+  const setImageFile = (file) => {
+    setFile({
+      fileName: file.original_filename,
+      fileURL: file.url,
+    });
   };
   return (
     <form ref={formRef} className={styles.form}>
@@ -71,7 +79,7 @@ const CardAddForm = ({ cardsInfo, onAdd }) => {
         placeholder="Message"
       />
       <div className={styles.image__input}>
-        <ProfileImageInput name="No file" />
+        <FileUploader fileName={file.fileName} setImageFile={setImageFile} />
       </div>
       <Button name="Add" onClick={onSubmit} />
     </form>

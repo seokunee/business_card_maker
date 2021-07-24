@@ -4,9 +4,8 @@ import Login from "./components/login/login";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Maker from "./components/maker/maker";
 
-const App = ({ authService }) => {
+const App = ({ FileUploader, authService }) => {
   const [userId, setUserId] = useState(null);
-
   return (
     <BrowserRouter>
       <Switch>
@@ -23,6 +22,7 @@ const App = ({ authService }) => {
           <div className={styles.container}>
             <Maker
               authService={authService}
+              FileUploader={FileUploader}
               userId={userId}
               setUserId={setUserId}
             />
