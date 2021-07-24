@@ -28,6 +28,7 @@ const CardAddForm = ({ FileUploader, cardsInfo, onAdd }) => {
     };
     onAdd(card);
     formRef.current.reset();
+    setFile({ fileName: "", fileURL: "" });
   };
 
   const setImageFile = (file) => {
