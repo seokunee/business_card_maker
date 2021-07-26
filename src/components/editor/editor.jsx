@@ -3,26 +3,25 @@ import CardAddForm from "../card_add_form/card_add_form";
 import CardEditForm from "../card_edit_form/card_edit_form";
 import styles from "./editor.module.css";
 
-const Editor = ({ FileUploader, cardsInfo, onAdd, onUpdate, onDelete }) => {
+const Editor = ({ FileUploader, cardsInfo, onUpdate, onDelete }) => {
   return (
     <section className={styles.editor}>
       <h1 className={styles.title}>Card Maker</h1>
       <div className={styles.cards}>
-        {cardsInfo.map((card, index) => {
+        {Object.keys(cardsInfo).map((key) => {
           return (
             <CardEditForm
-              key={card.id}
+              key={key}
               FileUploader={FileUploader}
-              card={card}
+              card={cardsInfo[key]}
               onUpdate={onUpdate}
-              index={index}
               onDelete={onDelete}
             />
           );
         })}
         <CardAddForm
           cardsInfo={cardsInfo}
-          onAdd={onAdd}
+          onUpdate={onUpdate}
           FileUploader={FileUploader}
         />
       </div>

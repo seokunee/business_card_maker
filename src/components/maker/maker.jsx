@@ -6,81 +6,48 @@ import { useHistory } from "react-router";
 import Editor from "../editor/editor";
 import Preview from "../preview/preview";
 
-const Maker = ({ FileUploader, authService, userId, setUserId }) => {
-  const [cardsInfo, setCardsInfo] = useState([
-    {
-      id: 1,
-      name: "seokhun",
-      company: "kakao",
-      theme: "Dark",
-      field: "front-engineer",
-      email: "seokhun@gmail.com",
-      message: "he is best of front engineer!",
-      fileName: "seokhun",
-      fileURL: "/images/default_logo.png",
-    },
-    {
-      id: 2,
-      name: "seokhun2",
-      company: "kakao",
-      theme: "Colorful",
-      field: "front-engineer",
-      email: "seokhun@gmail.com",
-      message: "he is best of front engineer!",
-      fileName: "seokhun",
-      fileURL: "/images/default_logo.png",
-    },
-    {
-      id: 3,
-      name: "seokhun3",
-      company: "kakao",
-      theme: "Light",
-      field: "front-engineer",
-      email: "seokhun@gmail.com",
-      message: "he is best of front engineer!",
-      fileName: "seokhun",
-      fileURL: "/images/default_logo.png",
-    },
-    {
-      id: 4,
-      name: "seokhun",
-      company: "kakao",
-      theme: "Dark",
-      field: "front-engineer",
-      email: "seokhun@gmail.com",
-      message: "he is best of front engineer!",
-      fileName: "seokhun",
-      fileURL: "/images/default_logo.png",
-    },
-  ]);
+const Maker = ({
+  FileUploader,
+  authService,
+  userId,
+  setUserId,
+  cardRepository,
+}) => {
+  const [cardsInfo, setCardsInfo] = useState({});
   const history = useHistory();
   const logout = () => {
     authService.signOut();
   };
 
   useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    const stopSync = cardRepository.readUserData(userId, setCardsInfo);
+    return () => stopSync();
+  }, [userId]);
+
+  useEffect(() => {
     authService.authState((user) => {
       if (!user) {
         history.push("/");
         setUserId(null);
+      } else {
+        setUserId(user.uid);
       }
     });
-  });
+  }, []);
 
-  const onAdd = (card) => {
-    setCardsInfo([...cardsInfo, card]);
+  const onUpdate = (card, id) => {
+    setCardsInfo({ ...cardsInfo, [id]: card });
+    cardRepository.writeUserData(card, userId);
   };
 
-  const onUpdate = (card, index) => {
-    const copy = [...cardsInfo];
-    copy[index] = card;
+  const onDelete = (id) => {
+    const copy = { ...cardsInfo };
+    delete copy[id];
     setCardsInfo(copy);
-  };
-
-  const onDelete = (index) => {
-    const copy = [...cardsInfo];
-    copy.splice(index, 1);
-    setCardsInfo(copy);
+    cardRepository.removeUserData(id, userId);
   };
 
   return (
@@ -90,7 +57,6 @@ const Maker = ({ FileUploader, authService, userId, setUserId }) => {
         <Editor
           cardsInfo={cardsInfo}
           FileUploader={FileUploader}
-          onAdd={onAdd}
           onUpdate={onUpdate}
           onDelete={onDelete}
         />
@@ -102,3 +68,48 @@ const Maker = ({ FileUploader, authService, userId, setUserId }) => {
 };
 
 export default Maker;
+
+// {
+//   id: 1,
+//   name: "seokhun",
+//   company: "kakao",
+//   theme: "Dark",
+//   field: "front-engineer",
+//   email: "seokhun@gmail.com",
+//   message: "he is best of front engineer!",
+//   fileName: "seokhun",
+//   fileURL: "/images/default_logo.png",
+// },
+// {
+//   id: 2,
+//   name: "seokhun2",
+//   company: "kakao",
+//   theme: "Colorful",
+//   field: "front-engineer",
+//   email: "seokhun@gmail.com",
+//   message: "he is best of front engineer!",
+//   fileName: "seokhun",
+//   fileURL: "/images/default_logo.png",
+// },
+// {
+//   id: 3,
+//   name: "seokhun3",
+//   company: "kakao",
+//   theme: "Light",
+//   field: "front-engineer",
+//   email: "seokhun@gmail.com",
+//   message: "he is best of front engineer!",
+//   fileName: "seokhun",
+//   fileURL: "/images/default_logo.png",
+// },
+// {
+//   id: 4,
+//   name: "seokhun",
+//   company: "kakao",
+//   theme: "Dark",
+//   field: "front-engineer",
+//   email: "seokhun@gmail.com",
+//   message: "he is best of front engineer!",
+//   fileName: "seokhun",
+//   fileURL: "/images/default_logo.png",
+// },

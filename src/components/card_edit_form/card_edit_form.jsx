@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import styles from "./card_edit_form.module.css";
 import Button from "../delete/button";
 
-const CardEditForm = ({ FileUploader, card, onUpdate, index, onDelete }) => {
+const CardEditForm = ({ FileUploader, card, onUpdate, onDelete }) => {
   const nameRef = useRef();
   const companyRef = useRef();
   const themeRef = useRef();
@@ -11,7 +11,7 @@ const CardEditForm = ({ FileUploader, card, onUpdate, index, onDelete }) => {
   const messageRef = useRef();
   // const [file, setFile] = useState({ fileName: "", fileURL: "" });
 
-  const { name, company, field, theme, email, message, fileName, fileURL } =
+  const { id, name, company, field, theme, email, message, fileName, fileURL } =
     card;
 
   const onChange = (event) => {
@@ -25,12 +25,12 @@ const CardEditForm = ({ FileUploader, card, onUpdate, index, onDelete }) => {
       email: emailRef.current.value,
       message: messageRef.current.value,
     };
-    onUpdate(copy, index);
+    onUpdate(copy, id);
   };
 
   const remove = (event) => {
     event.preventDefault();
-    onDelete(index);
+    onDelete(id);
   };
   const setImageFile = (file) => {
     const copy = {
@@ -38,7 +38,7 @@ const CardEditForm = ({ FileUploader, card, onUpdate, index, onDelete }) => {
       fileName: file.original_filename,
       fileURL: file.url,
     };
-    onUpdate(copy, index);
+    onUpdate(copy, id);
   };
   return (
     <form className={styles.form}>

@@ -3,7 +3,7 @@ import Button from "../delete/button";
 import ProfileImageInput from "../profile_image_input/profile_image_input";
 import styles from "./card_add_form.module.css";
 
-const CardAddForm = ({ FileUploader, cardsInfo, onAdd }) => {
+const CardAddForm = ({ FileUploader, onUpdate }) => {
   const formRef = useRef();
   const nameRef = useRef();
   const companyRef = useRef();
@@ -26,7 +26,7 @@ const CardAddForm = ({ FileUploader, cardsInfo, onAdd }) => {
       fileName: file.fileName || "",
       fileURL: file.fileURL || "",
     };
-    onAdd(card);
+    onUpdate(card, card.id);
     formRef.current.reset();
     setFile({ fileName: "", fileURL: "" });
   };

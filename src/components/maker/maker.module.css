@@ -2,18 +2,21 @@
 @value mediaQuery from '/src/common/size.css';
 
 .container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  width: 90%;
-  height: 100%;
+  max-width: 80rem;
   position: relative;
   background-color: makerWhite;
 }
 
 .maker {
+  flex: 1;
   background-color: makerWhite;
   display: flex;
   overflow: auto;
+  min-height: auto;
 }
 .maker::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/

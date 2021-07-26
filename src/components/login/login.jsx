@@ -23,9 +23,7 @@ const Login = ({ authService, loginUser, setUserId, userId }) => {
 
   useEffect(() => {
     authService.authState((user) => {
-      if (user) {
-        history.push("/maker");
-      }
+      user && goToMaker(user.id);
     });
   }, []);
 

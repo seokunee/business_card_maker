@@ -5,7 +5,7 @@
   flex-basis: 50%;
   height: 100%;
   border-right: 2px solid makerBorderColor;
-  overflow: auto;
+  overflow-y: auto;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }

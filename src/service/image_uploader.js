@@ -5,9 +5,9 @@ class ImageUploader {
   upload = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", `${preset}`);
+    formData.append("upload_preset", `${url}`);
 
-    const result = await fetch(`${url}`, {
+    const result = await fetch(`${preset}`, {
       method: "POST",
       body: formData,
     });
