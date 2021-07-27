@@ -25,7 +25,7 @@ const Maker = ({
     }
     const stopSync = cardRepository.readUserData(userId, setCardsInfo);
     return () => stopSync();
-  }, [userId]);
+  }, [userId, cardRepository]);
 
   useEffect(() => {
     authService.authState((user) => {
@@ -36,7 +36,7 @@ const Maker = ({
         setUserId(user.uid);
       }
     });
-  }, []);
+  }, [authService, setUserId, history]);
 
   const onUpdate = (card, id) => {
     setCardsInfo({ ...cardsInfo, [id]: card });

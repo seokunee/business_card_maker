@@ -11,8 +11,7 @@ const CardEditForm = ({ FileUploader, card, onUpdate, onDelete }) => {
   const messageRef = useRef();
   // const [file, setFile] = useState({ fileName: "", fileURL: "" });
 
-  const { id, name, company, field, theme, email, message, fileName, fileURL } =
-    card;
+  const { id, name, company, field, theme, email, message, fileName } = card;
 
   const onChange = (event) => {
     event.preventDefault();

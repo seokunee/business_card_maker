@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import Button from "../delete/button";
-import ProfileImageInput from "../profile_image_input/profile_image_input";
 import styles from "./card_add_form.module.css";
 
 const CardAddForm = ({ FileUploader, onUpdate }) => {

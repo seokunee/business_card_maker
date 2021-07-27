@@ -1,15 +1,14 @@
-import firebaseApp from "./firebase";
+import { firebaseDatabase } from "./firebase";
 
 class CardRepository {
   writeUserData = (card, userId) => {
-    firebaseApp.database().ref(`${userId}/cards/${card.id}`).set(card);
+    firebaseDatabase.ref(`${userId}/cards/${card.id}`).set(card);
   };
 
   readUserData = (userId, onUpdate) => {
-    const ref = firebaseApp.database().ref(`${userId}/cards`);
+    const ref = firebaseDatabase.ref(`${userId}/cards`);
     ref.on("value", (snapshot) => {
       const data = snapshot.val();
-      console.log(data);
       data && onUpdate(data);
     });
     return () => ref.off();
@@ -18,7 +17,7 @@ class CardRepository {
   };
 
   removeUserData = (id, userId) => {
-    firebaseApp.database().ref(`${userId}/cards/${id}`).set(null);
+    firebaseDatabase.ref(`${userId}/cards/${id}`).set(null);
   };
 }
 

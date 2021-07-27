@@ -1,19 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import styles from "./login.module.css";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import { useHistory } from "react-router-dom";
 
-const Login = ({ authService, loginUser, setUserId, userId }) => {
+const Login = ({ authService, setUserId }) => {
   const history = useHistory();
 
-  const goToMaker = (uId) => {
-    history.push({
-      pathname: "/maker",
-      state: { id: uId },
-    });
-    setUserId(uId);
-  };
+  const goToMaker = useCallback(
+    (uId) => {
+      history.push({
+        pathname: "/maker",
+        state: { id: uId },
+      });
+      setUserId(uId);
+    },
+    [history, setUserId]
+  );
 
   const onLogin = (event) => {
     authService //
@@ -25,11 +28,11 @@ const Login = ({ authService, loginUser, setUserId, userId }) => {
     authService.authState((user) => {
       user && goToMaker(user.id);
     });
-  }, []);
+  }, [authService, goToMaker]);
 
   return (
     <section className={styles.section}>
-      <Header loginUser={loginUser} />
+      <Header />
       <main className={styles.login}>
         <span className={styles.login__title}>Login</span>
         <ul className={styles.login__list}>
