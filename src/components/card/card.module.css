@@ -9,10 +9,18 @@
   margin-bottom: 1rem;
   border-radius: 1rem;
   max-width: 30rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .card.light {
-  background-color: rgb(151, 228, 228);
+  background: rgb(250, 255, 203);
+  background: linear-gradient(
+    90deg,
+    rgba(250, 255, 203, 1) 0%,
+    rgba(255, 237, 129, 1) 33%,
+    rgba(255, 253, 93, 1) 100%
+  );
+  /* background-color: rgb(151, 228, 228); */
   color: makerBlacks;
 }
 .card.dark {
@@ -25,12 +33,11 @@
 }
 
 .image {
-  width: 5rem;
-  height: 5rem;
+  width: 7rem;
+  height: 7rem;
   margin: 1.2rem 1.2rem 1.2rem 0.8rem;
   border-radius: 50%;
 }
-
 .info {
   display: flex;
   flex-direction: column;

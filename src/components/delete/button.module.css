@@ -8,3 +8,7 @@
   color: makerWhite;
   cursor: pointer;
 }
+
+.button:hover {
+  opacity: 0.8;
+}

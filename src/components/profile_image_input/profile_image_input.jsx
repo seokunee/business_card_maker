@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import styles from "./profile_image_input.module.css";
-const ProfileImageInput = ({ fileName, imageUploader, setImageFile }) => {
+const ProfileImageInput = memo(({ fileName, imageUploader, setImageFile }) => {
   const inputRef = useRef();
   const [spinner, setSpinner] = useState(false);
 
@@ -18,7 +18,7 @@ const ProfileImageInput = ({ fileName, imageUploader, setImageFile }) => {
   return (
     <div className={styles.container}>
       {spinner ? (
-        <div className={styles.loader}>Loading...</div>
+        <div className={styles.loader}></div>
       ) : (
         <>
           <input
@@ -41,6 +41,6 @@ const ProfileImageInput = ({ fileName, imageUploader, setImageFile }) => {
       )}
     </div>
   );
-};
+});
 
 export default ProfileImageInput;

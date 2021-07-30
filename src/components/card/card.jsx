@@ -8,7 +8,9 @@ const Card = memo(({ card }) => {
   const url = fileURL || DEFAULT_IMAGE_URL;
   return (
     <li className={`${styles.card} ${getStyles(theme)}`}>
-      <img className={styles.image} src={url} alt="profile_photo" />
+      <div className={styles.image_wrap}>
+        <img className={styles.image} src={url} alt="profile_photo" />
+      </div>
       <div className={styles.info}>
         <h3 className={styles.name}>{name}</h3>
         <p className={styles.company}>{company}</p>

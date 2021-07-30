@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./maker.module.css";
 import Footer from "../footer/footer";
 import Header from "../header/header";
@@ -15,9 +15,9 @@ const Maker = ({
 }) => {
   const [cardsInfo, setCardsInfo] = useState({});
   const history = useHistory();
-  const logout = () => {
+  const logout = useCallback(() => {
     authService.signOut();
-  };
+  }, [authService]);
 
   useEffect(() => {
     if (!userId) {
@@ -52,7 +52,7 @@ const Maker = ({
 
   return (
     <div className={styles.container}>
-      <Header userId={userId} logout={logout} />
+      <Header logout={logout} />
       <section className={styles.maker}>
         <Editor
           cardsInfo={cardsInfo}
@@ -62,54 +62,9 @@ const Maker = ({
         />
         <Preview cardsInfo={cardsInfo} />
       </section>
-      <Footer userId={userId} />
+      <Footer />
     </div>
   );
 };
 
 export default Maker;
-
-// {
-//   id: 1,
-//   name: "seokhun",
-//   company: "kakao",
-//   theme: "Dark",
-//   field: "front-engineer",
-//   email: "seokhun@gmail.com",
-//   message: "he is best of front engineer!",
-//   fileName: "seokhun",
-//   fileURL: "/images/default_logo.png",
-// },
-// {
-//   id: 2,
-//   name: "seokhun2",
-//   company: "kakao",
-//   theme: "Colorful",
-//   field: "front-engineer",
-//   email: "seokhun@gmail.com",
-//   message: "he is best of front engineer!",
-//   fileName: "seokhun",
-//   fileURL: "/images/default_logo.png",
-// },
-// {
-//   id: 3,
-//   name: "seokhun3",
-//   company: "kakao",
-//   theme: "Light",
-//   field: "front-engineer",
-//   email: "seokhun@gmail.com",
-//   message: "he is best of front engineer!",
-//   fileName: "seokhun",
-//   fileURL: "/images/default_logo.png",
-// },
-// {
-//   id: 4,
-//   name: "seokhun",
-//   company: "kakao",
-//   theme: "Dark",
-//   field: "front-engineer",
-//   email: "seokhun@gmail.com",
-//   message: "he is best of front engineer!",
-//   fileName: "seokhun",
-//   fileURL: "/images/default_logo.png",
-// },
