@@ -71,7 +71,7 @@
 
 ## About The Project
 
-[Project link](https://seokunee.github.io/youtube_clone/)
+[Project link](https://seokunee.github.io/business_card_maker/)
 </br>
 </br>
 

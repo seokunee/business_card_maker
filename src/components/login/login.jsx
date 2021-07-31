@@ -10,7 +10,7 @@ const Login = ({ authService, setUserId }) => {
   const goToMaker = useCallback(
     (uId) => {
       history.push({
-        pathname: "/maker",
+        pathname: "/business_card_maker/maker",
         state: { id: uId },
       });
       setUserId(uId);

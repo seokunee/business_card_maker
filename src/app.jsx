@@ -10,12 +10,12 @@ const App = ({ FileUploader, authService, cardRepository }) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/business_card_maker">
           <div className={styles.container}>
             <Login authService={authService} setUserId={setUserId} />
           </div>
         </Route>
-        <Route exact path="/maker">
+        <Route exact path="/business_card_maker/maker">
           <div className={styles.container}>
             <Maker
               authService={authService}

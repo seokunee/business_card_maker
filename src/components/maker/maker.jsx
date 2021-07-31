@@ -30,7 +30,7 @@ const Maker = ({
   useEffect(() => {
     authService.authState((user) => {
       if (!user) {
-        history.push("/");
+        history.push("/business_card_maker");
         setUserId(null);
       } else {
         setUserId(user.uid);
